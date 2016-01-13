@@ -5,7 +5,8 @@ set -e
 npm install
 export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 
-pwd
-babel src --presets es2015 --out-dir scripts
+ROOT_DIR=$(dirname $(dirname $0))
+echo $ROOT_DIR
+babel $ROOT_DIR/src --presets es2015 --out-dir $ROOT_DIR/scripts
 
 exec node_modules/.bin/hubot --name "yui" "$@"
